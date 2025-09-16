@@ -1,0 +1,80 @@
+// Admin model: Define an Admin model with fields such as id, username, and password. Apply annotations like @Entity, @Id, @NotNull, and @JsonProperty.
+
+class Admin {
+  int id
+  String username
+  String password
+}
+
+// Appointment model: Define an Appointment model, linking Doctor and Patient entities. Implement helper methods like getEndTime().
+class Appointment {
+  
+  private String patient
+  private String doctor
+  private String date
+  private String time
+  private String location
+
+  function Appointment(String patient, String doctor, String date, String time, String location){
+
+    this.patient   = patient;
+    this.doctor    = doctor;
+    this.date      = date;
+    this.time      = time;
+    this. location = location
+  }
+  
+  function getPatient(){ return this.patient; }
+  function getDoctor(){ return this.doctor; }
+  function getDate(){ return this.date; }
+  function getTime(){ return this.time; }
+  function getLocation(){ return this.location }  
+
+  function setPatient(String patient){ this.patient = patient; }
+  function setPDoctor(String doctor){ this.doctor = doctor; }
+  function setDate(String date){ this.date = date; }
+  function setTime(String time){ this.time = time; }
+  function setLocation(){ this.location = location; }
+
+}
+
+//Doctor model: Create a Doctor model with fields like name, speciality, and availableTimes. Add validation annotations.
+class Doctor {
+
+  private String name;
+  private String speciality
+  private String availableTimes
+  private String location
+
+  function Appointment(String name, String speciality, String availableTimes String location){
+
+    this.name           = name;
+    this.speciality     = speciality;
+    this.availableTimes = availableTimes;
+    this. location      = location
+  }
+  
+  function getPatient(){ return this.patient; }
+  function getDoctor(){ return this.doctor; }
+  function getDate(){ return this.date; }
+  function getTime(){ return this.time; }
+  function getLocation(){ return this.location }  
+
+  function setPatient(String patient){ this.patient = patient; }
+  function setPDoctor(String doctor){ this.doctor = doctor; }
+  function setDate(String date){ this.date = date; }
+  function setTime(String time){ this.time = time; }
+  function setLocation(){ this.location = location; }
+
+
+
+
+
+}
+
+
+Patient model: Define a Patient model with fields like name, email, and address.
+
+Prescription model: Define a MongoDB Prescription model with fields like patientName, medication, and appointmentId.
+
+Push to GitHub: Commit your changes and push them to your GitHub repository.
