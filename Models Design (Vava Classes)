@@ -1,19 +1,33 @@
 // Admin model: Define an Admin model with fields such as id, username, and password. Apply annotations like @Entity, @Id, @NotNull, and @JsonProperty.
 
 class Admin {
-  int id
-  String username
-  String password
+  
+  Private int id
+  Private String username
+  Private String password
+  
+  function Admin(String username, String password){
+
+    this.username = username;
+    this.password = password;
+  }
+
+  function getUsername(){ return this.username; }
+  function getPassword(){ return this.password; }
+
+  function settUsername(String username){ this.username = username; }
+  function setPassword(String password){ this.password = password; }
+
 }
 
 // Appointment model: Define an Appointment model, linking Doctor and Patient entities. Implement helper methods like getEndTime().
 class Appointment {
   
-  private String patient
-  private String doctor
-  private String date
-  private String time
-  private String location
+  Private String patient
+  Private String doctor
+  Private String date
+  Private String time
+  Private String location
 
   function Appointment(String patient, String doctor, String date, String time, String location){
 
@@ -41,12 +55,12 @@ class Appointment {
 //Doctor model: Create a Doctor model with fields like name, speciality, and availableTimes. Add validation annotations.
 class Doctor {
 
-  private String name;
-  private String speciality
-  private String availableTimes
-  private String location
+  Private String name;
+  Private String speciality
+  Private String availableTimes
+  Private String location
 
-  function Appointment(String name, String speciality, String availableTimes String location){
+  function Doctor(String name, String speciality, String availableTimes String location){
 
     this.name           = name;
     this.speciality     = speciality;
@@ -54,27 +68,45 @@ class Doctor {
     this. location      = location
   }
   
-  function getPatient(){ return this.patient; }
-  function getDoctor(){ return this.doctor; }
-  function getDate(){ return this.date; }
-  function getTime(){ return this.time; }
+  function getName(){ return this.Name; }
+  function getSpeciality(){ return this.speciality; }
+  function getAvailableTimes(){ return this.availableTimes; }
   function getLocation(){ return this.location }  
 
-  function setPatient(String patient){ this.patient = patient; }
-  function setPDoctor(String doctor){ this.doctor = doctor; }
-  function setDate(String date){ this.date = date; }
-  function setTime(String time){ this.time = time; }
-  function setLocation(){ this.location = location; }
+  function setName(String name){ this.name = name; }
+  function setSpeciality(String speciality){ this.speciality = speciality; }
+  function setAvailableTimes(String availableTimes){ this.availableTimes = availableTimes; }
+  function setLocation(String location){ this.location = location; }
+}
 
+// Patient model: Define a Patient model with fields like name, email, and address.
+class Patient {
 
+  Private String name;
+  Private String address;
+  Private String phone;
+  Private String doctors
 
+  function Patient( String name, String address, String phone, String doctors){
+    this.name    = name;
+    this.address = address;
+    this.phone   = phone;
+    this.doctors = doctors
+  }
 
+  getName(){ return this.name}
+  getAddress(){ return this.address; }
+  getPhone(){ return this.phone; }
+  getDoctors(){ return this.doctors; } 
+
+  setName(String name){ this.name = name}
+  setAddress(String address){ this.address = address; }
+  setPhone(String phone){ this.phone = phone; }
+  setDoctors(String doctors){ this.doctors = doctors; } 
 
 }
 
 
-Patient model: Define a Patient model with fields like name, email, and address.
+// Prescription model: Define a MongoDB Prescription model with fields like patientName, medication, and appointmentId.
 
-Prescription model: Define a MongoDB Prescription model with fields like patientName, medication, and appointmentId.
 
-Push to GitHub: Commit your changes and push them to your GitHub repository.
