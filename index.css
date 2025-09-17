@@ -1,0 +1,272 @@
+/* index.css — Global base & layout styles */
+
+/* Import Roboto for global typography */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* 1) Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #f8f9fa;
+}
+
+/* Make the page use full height and allow the main content to grow */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 2) Main Wrapper & Containers */
+main.main-content {
+  /* Background image and positioning */
+  background: url('./assets/img/bg.jpg') center / cover no-repeat fixed;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  gap: 2rem;
+}
+
+/* 3) Headings & Text */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1f2a44;
+  margin-bottom: 1rem;
+}
+
+p { color: #2f3640; }
+
+/* 4) Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #0d6efd;
+  color: #fff;
+  transition: transform .06s ease, background-color .2s ease, box-shadow .2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.btn:hover { background-color: #0b5ed7; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible {
+  outline: 3px solid rgba(13,110,253,.4);
+  outline-offset: 2px;
+}
+
+/* role buttons container */
+.role-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: .5rem;
+}
+
+/* Specific variants */
+.role-btn { min-width: 9rem; }
+.dashboard-btn { background-color: #2c7be5; }
+.dashboard-btn:hover { background-color: #2467bf; }
+
+/* 5) Inputs & Interactive Elements */
+.input-field,
+.select-dropdown,
+textarea.input-field {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #212529;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.input-field:focus,
+.select-dropdown:focus,
+textarea.input-field:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+  outline: none;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+/* 6) Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal[hidden] { display: none; }
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,.5);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 560px;
+  width: min(92%, 560px);
+  padding: 1.5rem;
+  z-index: 1001;
+  box-shadow: 0 16px 48px rgba(0,0,0,.2);
+}
+
+/* Close button supports both .modal-close and .close classnames */
+.modal-close,
+.close {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  color: #6c757d;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.modal-close:hover,
+.close:hover { color: #000; background-color: rgba(0,0,0,.05); }
+
+.modal-body { margin-top: 1rem; }
+
+/* 7) Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.header .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #1f2a44;
+  text-decoration: none;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: #1f2a44;
+  padding: .5rem .75rem;
+  border-radius: 6px;
+}
+
+.header nav a:hover,
+.header nav a:focus-visible {
+  background-color: rgba(13,110,253,.08);
+  outline: none;
+}
+
+/* 8) Footer */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid #e9ecef;
+}
+
+.footer .section {
+  min-width: 180px;
+  flex: 1 1 240px;
+}
+
+.footer .section h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2a44;
+  margin-bottom: .5rem;
+}
+
+.footer a { color: #0d6efd; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* 9) Utilities */
+.hidden { display: none !important; }
+.center { text-align: center; }
+.mt-1 { margin-top: .25rem; }
+.mt-2 { margin-top: .5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+
+/* 10) Responsiveness */
+@media (max-width: 768px) {
+  h2 { font-size: 1.5rem; }
+  .role-buttons { gap: .75rem; }
+  .header { flex-direction: column; align-items: stretch; }
+  .header nav ul { flex-wrap: wrap; }
+  .footer { flex-direction: column; }
+}

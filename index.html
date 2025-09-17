@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Select Role • Demo</title>
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/favicon.ico" />
+
+    <!-- CSS links -->
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Utility JS (defer avoids render-blocking) -->
+    <script src="./js/util.js" defer></script>
+    <script src="./js/render.js" defer></script>
+
+    <!-- Components JS (header/footer) -->
+    <script src="./js/components/header.js" defer></script>
+    <script src="./js/components/footer.js" defer></script>
+  </head>
+  <body>
+    <main class="main-content" id="main">
+      <div class="container">
+        <div class="wrapper">
+          <!-- Header placeholder -->
+          <div id="header"></div>
+
+          <!-- Role selection section -->
+          <section id="role-selection" aria-labelledby="role-heading">
+            <h2 id="role-heading">Select Your Role</h2>
+            <div class="role-buttons" role="group" aria-label="Roles">
+              <button
+                id="roleAdminBtn"
+                class="btn role-btn"
+                type="button"
+                onclick="window.selectRole && window.selectRole('Admin')"
+                aria-controls="modal"
+              >
+                Admin
+              </button>
+
+              <button
+                id="roleDoctorBtn"
+                class="btn role-btn"
+                type="button"
+                onclick="window.selectRole && window.selectRole('Doctor')"
+                aria-controls="modal"
+              >
+                Doctor
+              </button>
+
+              <button
+                id="rolePatientBtn"
+                class="btn role-btn"
+                type="button"
+                onclick="window.selectRole && window.selectRole('Patient')"
+                aria-controls="modal"
+              >
+                Patient
+              </button>
+            </div>
+          </section>
+
+          <!-- Footer placeholder -->
+          <div id="footer"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal (hidden by default; toggle via JS) -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-content" role="document">
+        <button id="closeModal" class="modal-close" type="button" aria-label="Close modal">×</button>
+        <div id="modal-body" class="modal-body">
+          <!-- Dynamic content injected by JS -->
+        </div>
+      </div>
+      <div class="modal-backdrop" aria-hidden="true"></div>
+    </div>
+
+    <!-- Services module: role selection + modal behavior -->
+    <!-- Using type=module keeps code scoped; if using inline onclick, expose a global like window.selectRole in this module. -->
+    <script type="module" src="../js/services/index.js" defer></script>
+  </body>
+</html>
+     

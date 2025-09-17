@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DoctorDashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/favicon.ico" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/adminDashboard.css" />
+    <link rel="stylesheet" href="./assets/css/doctorDashboard.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Utility Scripts (defer to avoid render-blocking) -->
+    <script src="./js/render.js" defer></script>
+    <script src="./js/util.js" defer></script>
+
+    <!-- Components -->
+    <script src="./js/components/header.js" defer></script>
+    <script src="./js/components/footer.js" defer></script>
+    <script src="./js/components/patientRows.js" defer></script>
+
+    <!-- Services and Main Logic -->
+    <script src="./js/services/patientServices.js" defer></script>
+    <script src="./js/pages/doctorDashboard.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <!-- Header injected by component script -->
+        <div id="header"></div>
+
+        <!-- Main Dashboard -->
+        <main id="dashboard" class="main-content" aria-labelledby="dashboard-title">
+          <h2 id="dashboard-title" class="visually-hidden">Doctor Dashboard</h2>
+
+          <!-- Search + Filters -->
+          <section class="controls" aria-label="Filters and Search">
+            <div class="search-bar">
+              <label for="searchBar" class="visually-hidden">Search patients</label>
+              <input type="text" id="searchBar" placeholder="Search by name, ID, phone, or email" />
+            </div>
+            <div class="filters">
+              <button id="todayAppointmentsBtn" type="button">Today’s Appointments</button>
+              <label for="appointmentDate" class="visually-hidden">Select date</label>
+              <input type="date" id="appointmentDate" />
+            </div>
+          </section>
+
+          <!-- Patient Records Table -->
+          <section class="table-wrap" aria-label="Patient records">
+            <table id="patientTable" role="table">
+              <thead>
+                <tr role="row">
+                  <th scope="col">Patient ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Prescription</th>
+                </tr>
+              </thead>
+              <tbody id="patientTableBody">
+                <!-- Rows populated dynamically by patientRows.js / doctorDashboard.js -->
+              </tbody>
+            </table>
+          </section>
+        </main>
+
+        <!-- Footer injected by component script -->
+        <div id="footer"></div>
+      </div>
+    </div>
+  </body>
+</html>

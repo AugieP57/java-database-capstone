@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PatientDashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/favicon.ico" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/adminDashboard.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/patientDashboard.css" />
+
+    <!-- Utilities & Components -->
+    <script src="../js/render.js" defer></script>
+    <script src="../js/util.js" defer></script>
+    <script src="../js/components/header.js" defer></script>
+    <script src="../js/components/footer.js" defer></script>
+    <script type="module" src="../js/components/modals.js"></script>
+  </head>
+  <body onload="renderContent()">
+    <div class="container">
+      <div class="wrapper">
+        <!-- Dynamic Header -->
+        <div id="header"></div>
+
+        <main class="main-content" aria-labelledby="dashboard-title">
+          <h2 id="dashboard-title" class="visually-hidden">Patient Dashboard</h2>
+
+          <!-- Search Bar -->
+          <div class="search-wrapper">
+            <label class="visually-hidden" for="searchBar">Search</label>
+            <input type="text" id="searchBar" class="searchBar" placeholder="Search Bar for custom output" />
+          </div>
+
+          <!-- Filters -->
+          <div class="filter-wrapper">
+            <label class="visually-hidden" for="filterTime">Filter by time</label>
+            <select class="filter-select" id="filterTime">
+              <option value="">Time of Day</option>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+
+            <label class="visually-hidden" for="filterSpecialty">Filter by specialty</label>
+            <select class="filter-select" id="filterSpecialty">
+              <option value="">Specialty</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Dermatology">Dermatology</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Pediatrics">Pediatrics</option>
+            </select>
+          </div>
+
+          <!-- Dynamic content container for doctor cards -->
+          <div id="content"></div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer"></div>
+      </div>
+    </div>
+
+    <!-- Reusable Modal -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-content" role="document">
+        <span class="close" id="closeModal" aria-label="Close modal">&times;</span>
+        <div id="modal-body"></div>
+      </div>
+      <div class="modal-backdrop" aria-hidden="true"></div>
+    </div>
+
+    <!-- Page Logic -->
+    <script type="module" src="../js/patientDashboard.js" defer></script>
+  </body>
+</html>

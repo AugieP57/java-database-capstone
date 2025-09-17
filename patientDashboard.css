@@ -1,0 +1,145 @@
+/* patientDashboard.css — Patient-facing UI components */
+
+/* =============================
+   Doctor Card: Actions section
+   ============================= */
+.card-actions {
+  background: #1f2a44; /* dark background */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center action buttons */
+  gap: .75rem;
+  padding: .85rem 1rem;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
+  transition: background-color .2s ease-in-out, filter .2s ease-in-out;
+}
+
+.card-actions:hover { background-color: #182033; }
+
+.card-actions .btn,
+.card-actions button {
+  padding: .6rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background: #0e917e; /* accent */
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .06s ease, filter .2s ease;
+}
+
+.card-actions .btn:hover,
+.card-actions button:hover { filter: brightness(1.08); }
+
+.card-actions .btn:active,
+.card-actions button:active { transform: translateY(1px); }
+
+/* =============================
+   Ripple overlay (click feedback)
+   ============================= */
+/* Usage: dynamically insert an element <span class="ripple" style="--x: 200px; --y: 300px"></span> */
+.ripple {
+  position: fixed;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .18);
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  animation: ripple-pop .6s ease-out forwards;
+  z-index: 9999;
+}
+
+.ripple--light { background: rgba(255, 255, 255, .28); }
+
+@keyframes ripple-pop {
+  to {
+    transform: translate(-50%, -50%) scale(40);
+    opacity: 0;
+  }
+}
+
+/* =====================================
+   Bottom Pop-Up Modal for Booking (.modalApp)
+   ===================================== */
+.modalApp {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) translateY(100%);
+  width: min(540px, 92%);
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -10px 35px rgba(0,0,0,.15);
+  padding: 1rem 1rem 1.25rem;
+  z-index: 10000;
+  transition: transform .32s cubic-bezier(.22,.61,.36,1), opacity .2s ease;
+  opacity: .98;
+}
+
+.modalApp.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Optional dim backdrop specific to this modal type */
+.modalApp-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.modalApp-backdrop.active { opacity: 1; }
+
+/* =============================
+   Modal form fields
+   ============================= */
+.modalApp .modal-title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #1f2a44;
+  text-align: center;
+  margin: .25rem 0 .5rem;
+}
+
+.modalApp .field,
+.modalApp input,
+.modalApp select,
+.modalApp textarea {
+  display: block;
+  width: 90%;
+  margin: .5rem auto; /* centered */
+  padding: .75rem .9rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #1f2a44;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.modalApp input:focus,
+.modalApp select:focus,
+.modalApp textarea:focus {
+  border-color: #0e917e;
+  box-shadow: 0 0 0 .2rem rgba(14,145,126,.18);
+}
+
+.modalApp .row { display: flex; gap: .75rem; justify-content: center; }
+.modalApp .row > * { flex: 1; }
+
+/* =============================
+   Booking confirmation button
+   ============================= */
+.modalApp .confirm-btn {
+  display: block;
+  width: 90%;
+  margin: .75rem auto 0;
+
