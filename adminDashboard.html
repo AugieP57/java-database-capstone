@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Dashboard</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" th:href="@{/assets/css/adminDashboard.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+
+    <!-- Utilities & Rendering Logic -->
+    <script th:src="@{/js/render.js}" defer></script>
+    <script th:src="@{/js/util.js}" defer></script>
+
+    <!-- Layout Components -->
+    <script th:src="@{/js/components/header.js}" defer></script>
+    <script th:src="@{/js/components/footer.js}" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <!-- Dynamic Header (provides an "Add Doctor" button with a unique ID) -->
+        <div id="header"></div>
+
+        <main class="main-content" role="main">
+          <!-- Search Bar -->
+          <div class="controls">
+            <label for="searchBar" class="visually-hidden">Search by doctor name</label>
+            <input
+              type="text"
+              id="searchBar"
+              placeholder="search by doctor name"
+              autocomplete="off"
+            />
+
+            <!-- Filters -->
+            <div class="filters">
+              <label for="sortByTime" class="visually-hidden">Sort by time</label>
+              <select id="sortByTime" name="sortByTime" aria-label="Sort by time">
+                <option value="">Sort by time</option>
+                <option value="asc">Earliest first</option>
+                <option value="desc">Latest first</option>
+              </select>
+
+              <label for="filterSpecialty" class="visually-hidden">Filter by specialty</label>
+              <select id="filterSpecialty" name="filterSpecialty" aria-label="Filter by specialty">
+                <option value="">All specialties</option>
+                <!-- dynamically populated options allowed -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Content Injection Point -->
+          <div id="content" aria-live="polite"></div>
+        </main>
+
+        <!-- Dynamic Footer -->
+        <div id="footer"></div>
+      </div>
+    </div>
+
+    <!-- Modal (hidden by default) -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <span id="closeModal" class="close" role="button" tabindex="0" aria-label="Close modal">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+
+    <!-- Page-specific Modules -->
+    <script type="module" src="../js/services/adminDashboard.js" defer></script>
+    <script type="module" src="../js/components/doctorCard.js" defer></script>
+  </body>
+</html>
+
+
